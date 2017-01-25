@@ -90,7 +90,7 @@ changes.
 
 Once you are done making changes, you can begin the process of getting
 your code merged into the main repo. Step 1 is to rebase upstream
-changes to the master branch into yours by running this command
+changes to the develop branch into yours by running this command
 from your branch:
 
 ```bash

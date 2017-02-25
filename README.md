@@ -31,6 +31,10 @@ Under Construction.
 
 ## Development
 
+### Scaffolding README
+
+See [Scaffolding README.md](Scaffolding README.md) for comprehensive information about the scaffolding.
+
 ### Installing Dependencies
 
 Install NPM modules in the **root** directory by executing:

@@ -1,5 +1,32 @@
-.duck {
-  display: block;
-  width: 120px;
-  margin: 1.5rem auto;
+#cover-image {
+  background-attachment: fixed;
+  background-image: url("../assets/people-on-couch.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 56px);
+  justify-content: center;
+  width: 100vw;
+}
+
+.landing-button {
+  background-color: transparent !important;
+  border: 2px solid white;
+  margin: 0 10px;
+  width: 125px;
+}
+
+.landing-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.landing-text {
+  color: white;
+  font-size: 100px;
+  margin: 0;
+  text-align: center;
 }

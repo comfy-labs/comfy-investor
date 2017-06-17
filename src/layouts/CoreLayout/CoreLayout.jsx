@@ -19,7 +19,7 @@ export const CoreLayout = ({ children }) => (
         </ToolbarGroup>
         <ToolbarGroup>
           <TextField hintText='Ex: AAPL' />
-          <IconButton href='/counter'>
+          <IconButton href='/chart'>
             <Search />
           </IconButton>
         </ToolbarGroup>

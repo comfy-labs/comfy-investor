@@ -13,12 +13,12 @@ import '../../styles/core.scss';
 export const CoreLayout = ({ children }) => (
   <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
     <div>
-      <Toolbar>
+      <Toolbar className='header'>
         <ToolbarGroup firstChild>
-          <FlatButton href='/' label='Comfy Investor' />
+          <FlatButton className='header-title' href='/' label='Comfy Investor' />
         </ToolbarGroup>
         <ToolbarGroup>
-          <TextField hintText='Ex: AAPL' />
+          <TextField hintText='Ex: AAPL' underlineFocusStyle={{ borderColor: '#1E392A' }} />
           <IconButton href='/chart'>
             <Search />
           </IconButton>

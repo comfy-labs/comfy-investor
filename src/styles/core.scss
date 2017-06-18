@@ -19,3 +19,26 @@ body {
 *:after {
   box-sizing: inherit;
 }
+
+.loader {
+  animation: spin 2s linear infinite;
+  -webkit-animation: spin 2s linear infinite;
+  border: 6px solid $ldr-base;
+  border-radius: 50%;
+  border-top: 6px solid $ldr-accent;
+  height: 50px;
+  left: calc(50% - 50px);
+  position: absolute;
+  top: calc(50% - 50px);
+  width: 50px;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,13 @@
+@import '../../styles/variables/colors.scss';
+
+.header {
+  background-color: $hdr-bg !important;
+}
+
+.header-icon {
+  fill: $hdr-icon !important;
+}
+
+.header-title {
+  color: $hdr-text !important;
+}

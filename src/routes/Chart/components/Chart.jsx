@@ -27,6 +27,22 @@ export class CandleStickChartWithMA extends React.Component {
     this.props.getSampleData();
   }
 
+  renderPlaceholder() {
+    return (
+      <div
+        style={{
+          border: 'solid 1px gray',
+          borderRadius: '5px',
+          height: '400px',
+          margin: '10px',
+          position: 'relative',
+        }}
+      >
+        <div className='loader' />
+      </div>
+    );
+  }
+
   render() {
     const { data, type, width, ratio } = this.props;
 
@@ -58,7 +74,7 @@ export class CandleStickChartWithMA extends React.Component {
       .stroke('#4682B4')
       .fill('#4682B4');
 
-    return !data.length ? null : (
+    return !data.length ? this.renderPlaceholder() : (
       <ChartCanvas
         ratio={ratio} width={width} height={400}
         margin={{ left: 70, right: 70, top: 10, bottom: 30 }} type={type}

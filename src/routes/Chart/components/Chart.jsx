@@ -5,7 +5,7 @@ import * as d3 from 'd3';
 import ChartCanvas from 'react-stockcharts/lib/ChartCanvas';
 import Chart from 'react-stockcharts/lib/Chart';
 
-import { CandlestickSeries, BarSeries, LineSeries, AreaSeries } from 'react-stockcharts/lib/series';
+import { OHLCSeries, BarSeries, LineSeries, AreaSeries } from 'react-stockcharts/lib/series';
 import { discontinuousTimeScaleProvider } from 'react-stockcharts/lib/scale';
 
 import {
@@ -98,7 +98,7 @@ export class CandleStickChartWithMA extends React.Component {
             displayFormat={d3.format('.2f')}
           />
 
-          <CandlestickSeries />
+          <OHLCSeries stroke={d => d.close > d.open ? '#6BA583' : 'red'} />
           <LineSeries yAccessor={sma20.accessor()} stroke={sma20.stroke()} />
           <LineSeries yAccessor={ema20.accessor()} stroke={ema20.stroke()} />
           <LineSeries yAccessor={ema50.accessor()} stroke={ema50.stroke()} />

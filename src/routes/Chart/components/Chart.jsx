@@ -1,49 +1,66 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import * as d3 from 'd3';
-
 import ChartCanvas from 'react-stockcharts/lib/ChartCanvas';
 import Chart from 'react-stockcharts/lib/Chart';
-
 import { OHLCSeries, BarSeries, LineSeries, AreaSeries } from 'react-stockcharts/lib/series';
 import { discontinuousTimeScaleProvider } from 'react-stockcharts/lib/scale';
-
 import {
   CrossHairCursor,
   MouseCoordinateX,
   MouseCoordinateY,
   CurrentCoordinate,
 } from 'react-stockcharts/lib/coordinates';
-
 import { OHLCTooltip, MovingAverageTooltip } from 'react-stockcharts/lib/tooltip';
 import { XAxis, YAxis } from 'react-stockcharts/lib/axes';
 import { ema, sma } from 'react-stockcharts/lib/indicator';
-
-import { fitWidth, TypeChooser } from 'react-stockcharts/lib/helper';
+import { fitDimensions, fitWidth, TypeChooser } from 'react-stockcharts/lib/helper';
+import { Card, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import Toggle from 'material-ui/Toggle';
 
 export class CandleStickChartWithMA extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false,
+    };
+  }
 
   componentWillMount() {
     this.props.getSampleData();
   }
 
-  renderPlaceholder() {
-    return (
-      <div
-        style={{
-          border: 'solid 1px gray',
-          borderRadius: '5px',
-          height: '400px',
-          margin: '10px',
-          position: 'relative',
-        }}
-      >
-        <div className='loader' />
-      </div>
-    );
-  }
+  handleExpandChange = (expanded) => {
+    this.setState({ expanded });
+  };
 
-  render() {
+  handleToggle = (event, toggle) => {
+    this.setState({ expanded: toggle });
+  };
+
+  handleExpand = () => {
+    this.setState({ expanded: true });
+  };
+
+  handleReduce = () => {
+    this.setState({ expanded: false });
+  };
+
+  renderPlaceholder = () => (
+    <div
+      style={{
+        height: '400px',
+        margin: '10px',
+        position: 'relative',
+        width: '780px',
+      }}
+    >
+      <div className='loader' />
+    </div>
+  );
+
+  renderChart = () => {
     const { data, type, width, ratio } = this.props;
 
     const ema20 = ema()
@@ -139,6 +156,43 @@ export class CandleStickChartWithMA extends React.Component {
       </ChartCanvas>
     );
   }
+
+  render() {
+    return (
+      <div style={{ maxWidth: '800px', margin: '20px' }}>
+        <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+          <CardHeader
+            actAsExpander
+            showExpandableButton
+            subtitle='NASDAQ: MSFT'
+            title='Microsoft Corporation'
+          />
+          <CardMedia>
+            {this.renderChart()}
+          </CardMedia>
+          <CardText>
+            <Toggle
+              toggled={this.state.expanded}
+              onToggle={this.handleToggle}
+              labelPosition='right'
+              label='Company Fundamentals'
+            />
+          </CardText>
+          <CardTitle
+            expandable
+            title='Key Fundamentals'
+            subtitle='Description about Green/Yellow/Red light system.'
+          />
+          <CardText expandable>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+          </CardText>
+        </Card>
+      </div>
+    );
+  }
 }
 
 CandleStickChartWithMA.propTypes = {
@@ -153,6 +207,10 @@ CandleStickChartWithMA.defaultProps = {
   type: 'svg',
 };
 
-const fitWidthCandleStickChartWithMA = fitWidth(CandleStickChartWithMA);
+// const fitWidthCandleStickChartWithMA = fitWidth(CandleStickChartWithMA);
+const fitDimensionsProps = {
+  width: 800
+};
+const fitWidthCandleStickChartWithMA = fitDimensions(CandleStickChartWithMA, fitDimensionsProps);
 
 export default fitWidthCandleStickChartWithMA;

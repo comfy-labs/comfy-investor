@@ -11,7 +11,7 @@ import './CoreLayout.scss';
 import '../../styles/core.scss';
 
 export const CoreLayout = ({ children }) => (
-  <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+  <MuiThemeProvider>
     <div>
       <Toolbar className='header'>
         <ToolbarGroup firstChild>
